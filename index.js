@@ -1,8 +1,8 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const jwt = require('jsonwebtoken');
-const multer = require('multer');
-const path = require('path');
+// const multer = require('multer');
+// const path = require('path');
 const cors = require('cors');
 require('dotenv').config();
 
@@ -20,21 +20,21 @@ app.get('/',(req,res)=>{
 
 // Image Storage Engine
 
-const storage = multer.diskStorage({
-    destination : './upload/images',
-    filename : (req,file,cb)=>{
-        return cb(null,`${file.fieldname}_${Date.now()}${path.extname(file.originalname)}`)
-    }
-})
+// const storage = multer.diskStorage({
+//     destination : './upload/images',
+//     filename : (req,file,cb)=>{
+//         return cb(null,`${file.fieldname}_${Date.now()}${path.extname(file.originalname)}`)
+//     }
+// })
 
-const upload = multer ({storage : storage})
-app.use('/images',express.static('upload/images'))
-app.post('/upload',upload.single('product'),(req,res)=>{
-    res.json({
-        success : true,
-        image_url : `${process.env.BACKEND_URL}/images/${req.file.filename}`
-    })
-})
+// const upload = multer ({storage : storage})
+// app.use('/images',express.static('upload/images'))
+// app.post('/upload',upload.single('product'),(req,res)=>{
+//     res.json({
+//         success : true,
+//         image_url : `${process.env.BACKEND_URL}/images/${req.file.filename}`
+//     })
+// })
 
 // Product Schema
 
