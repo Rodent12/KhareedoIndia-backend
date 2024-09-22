@@ -174,7 +174,7 @@ app.get('/popularinwomen',async(req,res)=>{
     res.send(popular_in_women);
 })
 
-// middleware to fetchUser
+// middleware to fetchUser (authorization)
 
 const fetchUser = async(req,res,next)=>{
     const token = req.header('auth-token');
